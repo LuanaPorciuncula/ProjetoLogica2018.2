@@ -30,12 +30,30 @@ public class exprSolver {
 
 				if (linha.charAt(0) == '{') {
 					String[] clauses;
-					boolean valid, sat;
+					boolean valid = true, sat = true;
 
 					expr = expr.substring(1, expr.length()-1);
 					clauses = expr.split(",");
-					for(int i = 0; i < clauses.length; i++){
-
+					for(int i = 0; i < clauses.length && valid && sat; i++){
+						if(isValid()){
+							if (!valSat()){
+								sat = false;
+							}
+						} else {
+							valid = false;
+						}
+					}
+					if (valid){
+						if(sat){
+							out.write("A valoracao-verdade satisfaz o conjunto.\n\n");
+							System.out.print("A valoracao-verdade satisfaz o conjunto.\n\n");
+						} else {
+							out.write("A valoracao-verdade nao satisfaz o conjunto.\n\n");
+							System.out.print("A valoracao-verdade nao satisfaz o conjunto.\n\n");
+						}
+					} else {
+						out.write("Ha uma palavra nao legitima no conjunto.\n\n");
+						System.out.print("Ha uma palavra nao legitima no conjunto.\n\n");
 					}
 				} else {
 					if(isValid()){
@@ -61,12 +79,12 @@ public class exprSolver {
 		} catch (IOException e) {}
 	}
 
-	public static boolean isValid(){
-		return true;
+	public static boolean isValid (String expr){
+		return false;
 	}
 
-	public static boolean valSat(){
-		return true;
+	public static boolean valSat(String expr){
+		return false;
 	}
 
 
