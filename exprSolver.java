@@ -58,7 +58,7 @@ public class exprSolver {
 							out.write("A valoracao-verdade nao satisfaz a proposicao.");
 						}
 					} else {
-						out.write("A palavra nao e legitima.​");						
+						out.write("A palavra nao e legitima.");						
 					}
 				}
 
